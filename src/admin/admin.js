@@ -38,7 +38,7 @@ class Admin extends Component {
 
   render() {
     return (
-      <div className="App" >
+      <div className="admin" >
         <form onSubmit={this.handleSubmit}>
           <label>
             Building Name:
