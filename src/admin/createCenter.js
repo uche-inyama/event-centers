@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 
 const api_url = `http://localhost:3002/api/v1/centers`
 
-class Admin extends Component {
+class CreateCenter extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      // api_url: props.api_url,
       building: "",
       hall: "",
       price: 0,
       capacity: 0
     }
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleTaskChange = this.handleTaskChange.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleTaskChange(event) {
+  handleChange(event) {
     this.setState({
       task: event.target.value
     })
@@ -42,19 +41,19 @@ class Admin extends Component {
         <form onSubmit={this.handleSubmit}>
           <label>
             Building Name:
-            <input type="text" name="center[building]" onChange={this.handleTaskChange} />
+            <input type="text" name="center[building]" onChange={this.handleChange} />
           </label><br />
           <label>
             Hall name:
-            <input type="text" name="center[hall]" onChange={this.handleTaskChange} />
+            <input type="text" name="center[hall]" onChange={this.handleChange} />
           </label><br />
           <label>
             Price:
-            <input type="text" name="center[price]" onChange={this.handleTaskChange} />
+            <input type="text" name="center[price]" onChange={this.handleChange} />
           </label><br />
           <label>
             Capacity:
-          <input type="text" name="center[capacity]" onChange={this.handleTaskChange} />
+          <input type="text" name="center[capacity]" onChange={this.handleChange} />
           </label><br />
           <input type="submit" value="Add Event Center" />
         </form>
@@ -63,4 +62,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default CreateCenter;

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Admin from './admin/admin';
-import ItemList from './itemList/itemList';
+// import CreateCenter from './admin/createCenter';
+import Root from './container/root';
 
 const App = () => {
   return (
-    <div className="App" >
-      <Admin />
-      <ItemList />
+    <div className="App">
+      {/* <CreateCenter /> */}
+      <Root />
     </div>
   );
 }

@@ -1,19 +1,18 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import ItemList from '../itemList/itemList';
-import ItemDetail from '../itemdetail/itemdetail';
+import ConnectedItemList from './connectItemList';
 import configureStore from '../configureStore';
+import ConnectedForm from './connectedForm';
 
 const store = configureStore();
 
 const Root = () => {
   return (
     <Provider store={store}>
-      <ItemList />
-      <ItemDetail />
+      {/* <ConnectedForm /> */}
+      <ConnectedItemList />
     </Provider>
   )
 }
-
 
 export default Root

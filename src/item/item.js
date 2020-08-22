@@ -1,11 +1,27 @@
 import React from "react";
 
-export default function Item(props) {
+const Item = ({ id, onEditClick, event_center, onDeleteClick }) => {
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    onDeleteClick(id);
+  }
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    onEditClick();
+  }
   return (
     <>
-      <li>{props.event_center.building}:
-        {props.event_center.hall}
+      <li>
+        <h4>{event_center.building}</h4>
+        <h4>{event_center.hall}</h4>
+        <h4>{event_center.price}</h4>
+        <h4>{event_center.capacity}</h4>
+        <span onClick={handleEditClick}>Edit</span> <span onClick={handleDelete}>delete</span>
       </li>
     </>
   )
 }
+
+export default Item;
