@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import CenterList from './centerList';
@@ -8,11 +8,6 @@ import { requestCenters, deleteCenter } from './actions';
 const CentersPage = ({ centers, fetchCenters, deleteCenter }) => {
   console.log('centers page loaded');
   console.log(centers)
-  // useEffect(() => {
-  //   console.log('use effect - fetch centers');
-  //   fetchCenters();
-  // }, [])
-
   return (
     <div>
       <h2>Centers Page</h2>

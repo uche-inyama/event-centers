@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './rootReducer.js';
+import rootReducer from './admin/rootReducer.js';
 import { Provider } from 'react-redux';
-import { requestCenters } from './actions';
 import './index.css';
+import './reset.css';
 import App from './App';
 
 const store = createStore(
@@ -16,10 +16,10 @@ const store = createStore(
   )
 );
 
-store.subscribe(() => {
-  console.log('state modified - through reducers');
-  console.log(store.getState());
-});
+// store.subscribe(() => {
+//   console.log('state modified - through reducers');
+//   console.log(store.getState());
+// });
 
 ReactDOM.render(
   <Provider store={store}>

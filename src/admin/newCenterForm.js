@@ -10,8 +10,11 @@ class CreateCenter extends Component {
       id: this.props.id,
       building: '',
       hall: '',
+      city: '',
+      state: '',
       price: '',
-      capacity: ''
+      capacity: '',
+      image: null
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -47,6 +50,10 @@ class CreateCenter extends Component {
     this.props.history.push('/');
   }
 
+  onImageChange = event => {
+    this.setState({ image: event.target.files[0] })
+  }
+
   render() {
 
     return (
@@ -60,6 +67,7 @@ class CreateCenter extends Component {
             value={this.state.building}
           />
         </div>
+
         <div className="field">
           <label htmlFor="title">Hall name</label>
           <input type="text"
@@ -68,24 +76,54 @@ class CreateCenter extends Component {
             value={this.state.hall}
           />
         </div>
+
+        <div className="field">
+          <label htmlFor="title">City</label>
+          <input type="text"
+            name="center[city]"
+            onChange={(e) => { this.handleChange('city', e) }}
+            value={this.state.city}
+          />
+        </div>
+
+        <div className="field">
+          <label htmlFor="title">State</label>
+          <input type="text"
+            name="center[state]"
+            onChange={(e) => { this.handleChange('state', e) }}
+            value={this.state.state}
+          />
+        </div>
+
         <div className="field">
           <label htmlFor="title">Price</label>
           <input
-            type="text"
+            type="number"
             name="center[price]"
             onChange={(e) => { this.handleChange('price', e) }}
             value={this.state.price}
           />
         </div>
+
         <div className="field">
           <label htmlFor="title">Capacity</label>
           <input
-            type="text"
+            type="number"
             name="center[capacity]"
             onChange={(e) => { this.handleChange('capacity', e) }}
             value={this.state.capacity}
           />
         </div>
+        <div className="field">
+          <label htmlFor="title">Image</label>
+          <input type="file"
+            accept="image/"
+            multiple={false}
+            name="center[image]"
+            onChange={(e) => this.onImageChange(e)}
+          />
+        </div>
+
         <div className="field">
           <label htmlFor="submit">Submit</label>
           <Link to="/">Modus Create</Link>

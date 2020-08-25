@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import './App.css';
-import CentersPage from './centersPage';
-import newCenterForm from './newCenterForm';
-import { requestCenters } from './actions';
 import { connect } from 'react-redux';
+import './App.css';
+import CentersPage from './admin/centersPage';
+import newCenterForm from './admin/newCenterForm';
+import { requestCenters } from './admin/actions';
+import homePage from './users/homePage'
 
 const App = ({ loadCenters }) => {
   useEffect(() => {
@@ -18,6 +19,7 @@ const App = ({ loadCenters }) => {
         <Route exact path="/" component={CentersPage} />
         <Route path="/center/new" component={newCenterForm} />
         <Route path="/center/:id" component={newCenterForm} />
+        <Route path="/eventCenters" component={homePage} />
       </Switch>
     </Router>
   </div>);
