@@ -10,6 +10,7 @@ class CreateCenter extends Component {
       id: this.props.id,
       building: '',
       hall: '',
+      address: '',
       city: '',
       state: '',
       price: '',
@@ -27,8 +28,6 @@ class CreateCenter extends Component {
     fetch(`http://localhost:3002/api/v1/centers/${params.id}`)
       .then(res => res.json())
       .then(json => {
-        console.log('center to edit');
-        console.log(json);
         this.setState({
           ...json,
         })
@@ -40,6 +39,7 @@ class CreateCenter extends Component {
   }
 
   handleSubmit(event) {
+
     event.preventDefault();
     const { id } = this.state
     if (id) {
@@ -67,16 +67,22 @@ class CreateCenter extends Component {
             value={this.state.building}
           />
         </div>
-
         <div className="field">
-          <label htmlFor="title">Hall name</label>
+          <label htmlFor="title">Hall Name</label>
           <input type="text"
             name="center[hall]"
             onChange={(e) => { this.handleChange('hall', e) }}
             value={this.state.hall}
           />
         </div>
-
+        <div className="field">
+          <label htmlFor="title">Address</label>
+          <input type="text"
+            name="center[address]"
+            onChange={(e) => { this.handleChange('address', e) }}
+            value={this.state.address}
+          />
+        </div>
         <div className="field">
           <label htmlFor="title">City</label>
           <input type="text"
@@ -85,7 +91,6 @@ class CreateCenter extends Component {
             value={this.state.city}
           />
         </div>
-
         <div className="field">
           <label htmlFor="title">State</label>
           <input type="text"
@@ -94,39 +99,35 @@ class CreateCenter extends Component {
             value={this.state.state}
           />
         </div>
-
         <div className="field">
           <label htmlFor="title">Price</label>
-          <input
-            type="number"
+          <input type="text"
             name="center[price]"
             onChange={(e) => { this.handleChange('price', e) }}
             value={this.state.price}
           />
         </div>
-
         <div className="field">
           <label htmlFor="title">Capacity</label>
-          <input
-            type="number"
+          <input type="text"
             name="center[capacity]"
             onChange={(e) => { this.handleChange('capacity', e) }}
             value={this.state.capacity}
           />
         </div>
         <div className="field">
-          <label htmlFor="title">Image</label>
-          <input type="file"
-            accept="image/"
-            multiple={false}
+          <label htmlFor="title"></label>
+          <input
             name="center[image]"
-            onChange={(e) => this.onImageChange(e)}
+            type="file"
+            accept="image/*"
+            multiple={false}
+            onChange={this.onImageChange}
           />
         </div>
 
         <div className="field">
           <label htmlFor="submit">Submit</label>
-          <Link to="/">Modus Create</Link>
           <input type="submit" />
         </div>
       </form>

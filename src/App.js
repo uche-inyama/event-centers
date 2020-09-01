@@ -5,7 +5,7 @@ import './App.css';
 import CentersPage from './admin/centersPage';
 import newCenterForm from './admin/newCenterForm';
 import { requestCenters } from './admin/actions';
-import homePage from './users/homePage'
+import centerCard from './admin/centerCard';
 
 const App = ({ loadCenters }) => {
   useEffect(() => {
@@ -13,16 +13,18 @@ const App = ({ loadCenters }) => {
     loadCenters();
   }, []);
 
-  return (<div className="App">
-    <Router>
-      <Switch>
-        <Route exact path="/" component={CentersPage} />
-        <Route path="/center/new" component={newCenterForm} />
-        <Route path="/center/:id" component={newCenterForm} />
-        <Route path="/eventCenters" component={homePage} />
-      </Switch>
-    </Router>
-  </div>);
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route exact path="/" component={CentersPage} />
+          <Route excat path="/center/new" component={newCenterForm} />
+          <Route excat path="/center/:id" component={newCenterForm} />
+          <Route path="/new" component={centerCard} />
+        </Switch>
+      </Router>
+    </div>
+  );
 }
 
 const mapDispatchToProps = dispatch => {

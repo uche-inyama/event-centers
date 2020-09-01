@@ -16,11 +16,6 @@ const store = createStore(
   )
 );
 
-// store.subscribe(() => {
-//   console.log('state modified - through reducers');
-//   console.log(store.getState());
-// });
-
 ReactDOM.render(
   <Provider store={store}>
     <App />

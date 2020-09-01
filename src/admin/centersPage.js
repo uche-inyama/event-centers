@@ -7,7 +7,6 @@ import { requestCenters, deleteCenter } from './actions';
 
 const CentersPage = ({ centers, fetchCenters, deleteCenter }) => {
   console.log('centers page loaded');
-  console.log(centers)
   return (
     <div>
       <h2>Centers Page</h2>
@@ -19,7 +18,6 @@ const CentersPage = ({ centers, fetchCenters, deleteCenter }) => {
     </div>
   )
 }
-
 
 const mapStateToProps = (state) => {
   return {
