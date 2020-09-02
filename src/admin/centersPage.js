@@ -2,10 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import CenterList from './centerList';
-import { requestCenters, deleteCenter } from './actions';
+import { deleteCenter } from './actions';
 
 
-const CentersPage = ({ centers, fetchCenters, deleteCenter }) => {
+export const CentersPage = ({ centers, deleteCenter }) => {
   console.log('centers page loaded');
   return (
     <div>
@@ -27,9 +27,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchCenters: (() => {
-      dispatch(requestCenters());
-    }),
     deleteCenter: ((id) => {
       dispatch(deleteCenter(id))
     })

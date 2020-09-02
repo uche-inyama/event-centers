@@ -1,9 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withRouter } from "react-router"
 
 const centerCard = ({ center, deleteCenter }) => {
   const { building, id } = center
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    deleteCenter(id);
+  }
 
   return (
     <div>
@@ -15,7 +19,7 @@ const centerCard = ({ center, deleteCenter }) => {
       <div className="extra content">
         <div className="two buttons">
           <Link to={`/center/${id}`} className="basic button green">Edit</Link>
-          <div className="basic button red" onClick={() => deleteCenter(id)}>Delete</div>
+          <div className="basic button red" onClick={handleDelete}>Delete</div>
         </div>
       </div>
     </div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveCenter, centerFetched, centerUpdate } from './actions';
 
-class CreateCenter extends Component {
+export class CreateCenter extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,6 +62,7 @@ class CreateCenter extends Component {
         <div className="field">
           <label htmlFor="title">Building Name</label>
           <input type="text"
+            aria-label="building"
             name="center[building]"
             onChange={(e) => { this.handleChange('building', e) }}
             value={this.state.building}
