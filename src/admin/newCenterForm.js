@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { saveCenter, centerFetched, centerUpdate } from './actions';
+import { NewCenterForm } from './newCenterFormStyle'
+
 
 export class CreateCenter extends Component {
   constructor(props) {
@@ -57,81 +59,74 @@ export class CreateCenter extends Component {
   render() {
 
     return (
-      <form onSubmit={this.handleSubmit}>
-        <h2>Add new Center</h2>
-        <div className="field">
-          <label htmlFor="title">Building Name</label>
-          <input type="text"
-            aria-label="building"
-            name="center[building]"
-            onChange={(e) => { this.handleChange('building', e) }}
-            value={this.state.building}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">Hall Name</label>
-          <input type="text"
-            name="center[hall]"
-            onChange={(e) => { this.handleChange('hall', e) }}
-            value={this.state.hall}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">Address</label>
-          <input type="text"
-            name="center[address]"
-            onChange={(e) => { this.handleChange('address', e) }}
-            value={this.state.address}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">City</label>
-          <input type="text"
-            name="center[city]"
-            onChange={(e) => { this.handleChange('city', e) }}
-            value={this.state.city}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">State</label>
-          <input type="text"
-            name="center[state]"
-            onChange={(e) => { this.handleChange('state', e) }}
-            value={this.state.state}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">Price</label>
-          <input type="text"
-            name="center[price]"
-            onChange={(e) => { this.handleChange('price', e) }}
-            value={this.state.price}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title">Capacity</label>
-          <input type="text"
-            name="center[capacity]"
-            onChange={(e) => { this.handleChange('capacity', e) }}
-            value={this.state.capacity}
-          />
-        </div>
-        <div className="field">
-          <label htmlFor="title"></label>
-          <input
-            name="center[image]"
-            type="file"
-            accept="image/*"
-            multiple={false}
-            onChange={this.onImageChange}
-          />
-        </div>
+      <NewCenterForm>
+        <form onSubmit={this.handleSubmit}>
+          <h2>Add new Center</h2>
+          <div className="field">
+            <label htmlFor="title">Building Name</label>
+            <input type="text"
+              aria-label="building"
+              name="center[building]"
+              onChange={(e) => { this.handleChange('building', e) }}
+              value={this.state.building}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="title">Hall Name</label>
+            <input type="text"
+              name="center[hall]"
+              onChange={(e) => { this.handleChange('hall', e) }}
+              value={this.state.hall}
+            />
+          </div>
 
-        <div className="field">
-          <label htmlFor="submit">Submit</label>
-          <input type="submit" />
-        </div>
-      </form>
+          <div className="field">
+            <label htmlFor="title">City</label>
+            <input type="text"
+              name="center[city]"
+              onChange={(e) => { this.handleChange('city', e) }}
+              value={this.state.city}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="title">State</label>
+            <input type="text"
+              name="center[state]"
+              onChange={(e) => { this.handleChange('state', e) }}
+              value={this.state.state}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="title">Price</label>
+            <input type="text"
+              name="center[price]"
+              onChange={(e) => { this.handleChange('price', e) }}
+              value={this.state.price}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="title">Capacity</label>
+            <input type="text"
+              name="center[capacity]"
+              onChange={(e) => { this.handleChange('capacity', e) }}
+              value={this.state.capacity}
+            />
+          </div>
+          <div className="field">
+            <label htmlFor="title"></label>
+            <input
+              name="center[image]"
+              type="file"
+              accept="image/*"
+              multiple={false}
+              onChange={this.onImageChange}
+            />
+          </div>
+          <div className="field">
+            <input type="submit" />
+          </div>
+        </form>
+      </NewCenterForm>
     )
   }
 }
