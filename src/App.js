@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import './App.css';
 import CentersPage from './admin/centersPage';
 import newCenterForm from './admin/newCenterForm';
@@ -9,7 +10,6 @@ import centerCard from './admin/centerCard';
 
 const App = ({ loadCenters }) => {
   useEffect(() => {
-    console.log('load all centers here - app component');
     loadCenters();
   }, []);
 
@@ -25,14 +25,16 @@ const App = ({ loadCenters }) => {
       </Router>
     </div>
   );
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    loadCenters: () => {
-      dispatch(requestCenters());
-    }
-  }
 };
+
+App.propTypes = {
+  loadCenters: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  loadCenters: () => {
+    dispatch(requestCenters());
+  },
+});
 
 export default connect(null, mapDispatchToProps)(App);

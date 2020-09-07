@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const CenterCardWrapper = styled.div`
+const CenterCardWrapper = styled.div`
     display: grid;
     grid-template-columns: 4fr 1fr;
     text-transform: capitalize;
@@ -29,4 +29,6 @@ export const CenterCardWrapper = styled.div`
       display: grid;
       grid-template-columns: 1fr;
     }
-`
+`;
+
+export default CenterCardWrapper;

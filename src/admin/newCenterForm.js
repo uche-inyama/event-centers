@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { saveCenter, centerFetched, centerUpdate } from './actions';
-import { NewCenterForm } from './newCenterFormStyle'
+import NewCenterForm from './newCenterFormStyle'
 
 
 export class CreateCenter extends Component {

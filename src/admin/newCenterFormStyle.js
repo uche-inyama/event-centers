@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
-export const NewCenterForm = styled.div`
+const NewCenterForm = styled.div`
+font-family: 'Montserrat', sans-serif;
 .field{
   display: grid;
   grid-template-rows: 1fr;
@@ -9,4 +10,6 @@ export const NewCenterForm = styled.div`
     padding-top: 20px;
   }
 }
-`
+`;
+
+export default NewCenterForm;

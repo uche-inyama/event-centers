@@ -1,14 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CenterCardWrapper } from './centerCardStyle';
+import PropTypes from 'prop-types';
+import CenterCardWrapper from './centerCardStyle';
 
 const centerCard = ({ center, deleteCenter }) => {
-  const { id, building, hall, city, price, capacity } = center
+  const {
+    id, building, hall, city, price, capacity,
+  } = center;
 
-  const handleDelete = (e) => {
+  const handleDelete = e => {
     e.preventDefault();
     deleteCenter(id);
-  }
+  };
 
   return (
     <CenterCardWrapper className="center">
@@ -16,8 +19,16 @@ const centerCard = ({ center, deleteCenter }) => {
         <div className="building">{building}</div>
         <div className="hall">{hall}</div>
         <div className="city">{city}</div>
-        <div className="price">{price} units</div>
-        <div className="capacity">{capacity} units</div>
+        <div className="price">
+          {price}
+          {' '}
+          units
+        </div>
+        <div className="capacity">
+          {capacity}
+          {' '}
+          units
+        </div>
       </div>
       <div className="extra content">
         <div className="two buttons">
@@ -27,6 +38,19 @@ const centerCard = ({ center, deleteCenter }) => {
       </div>
     </CenterCardWrapper>
   );
-}
+};
 
-export default centerCard
+centerCard.propTypes = {
+  deleteCenter: PropTypes.func.isRequired,
+  center: PropTypes.shape({
+    building: PropTypes.string.isRequired,
+    hall: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    capacity: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+export default centerCard;

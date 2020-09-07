@@ -1,4 +1,6 @@
-import { SET_CENTERS, POST_CENTERS, CENTER_UPDATED, CENTER_DELETED } from '../actions'
+import {
+  SET_CENTERS, POST_CENTERS, CENTER_UPDATED, CENTER_DELETED,
+} from '../actions';
 
 const centers = (state = [], action) => {
   switch (action.type) {
@@ -17,5 +19,5 @@ const centers = (state = [], action) => {
     default:
       return state;
   }
-}
+};
 export default centers;

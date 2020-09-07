@@ -7,17 +7,17 @@ import CenterCard from './centerCard';
 describe.skip('cardCenter', () => {
   test('Edit text & Delete text', () => {
     const history = createMemoryHistory();
-    let center = {
-      building: 'Cherry'
-    }
+    const center = {
+      building: 'Cherry',
+    };
     render(
       <Router history={history}>
         <CenterCard center={center} />
-      </Router>
+      </Router>,
     );
     screen.debug();
     expect(screen.getByText('Edit')).toBeInTheDocument();
     expect(screen.getByText('Delete')).toBeInTheDocument();
     expect(screen.getByText('Cherry')).toBeInTheDocument();
-  })
-})
+  });
+});
