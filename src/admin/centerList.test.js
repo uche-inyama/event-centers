@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import CenterList from './centerList';
 
-describe.only('Center List', () => {
+describe.skip('Center List', () => {
   let history;
   beforeEach(() => {
     history = createMemoryHistory();
@@ -34,6 +34,6 @@ describe.only('Center List', () => {
     )
     expect(screen.getByText(/centers list/)).toBeInTheDocument();
     expect(screen.queryByText(/Green/)).toBeInTheDocument();
-    screen.debug();
+    screen.debug()
   })
 })

@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 import CenterList from './centerList';
 import { deleteCenter } from './actions';
+import { CentersPageWrapper } from './centersPageStyle'
 
 
 export const CentersPage = ({ centers, deleteCenter }) => {
   console.log('centers page loaded');
   return (
-    <div>
+    <CentersPageWrapper>
       <h2>Centers Page</h2>
-      <Link to="/center/new">Add Center</Link>
+      <Link to="/center/new" className="add-center">Add Center</Link>
       <CenterList
         centers={centers}
         deleteCenter={deleteCenter}
       />
-    </div>
+    </CentersPageWrapper>
   )
 }
 

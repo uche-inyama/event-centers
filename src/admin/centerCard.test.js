@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 import CenterCard from './centerCard';
 
-describe.only('cardCenter', () => {
+describe.skip('cardCenter', () => {
   test('Edit text & Delete text', () => {
     const history = createMemoryHistory();
     let center = {

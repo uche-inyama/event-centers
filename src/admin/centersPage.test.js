@@ -21,7 +21,7 @@ describe('center\'s component', () => {
         <CentersPage {...props} />
       </Router>
     )
-
+    console.log(wrapper.debug())
   })
   it('it renders the item from state', () => {
     expect(wrapper.find('Taj'))

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { CenterCardWrapper } from './centerCardStyle';
 
 const centerCard = ({ center, deleteCenter }) => {
-  const { building, id } = center
+  const { id, building, hall, city, price, capacity } = center
 
   const handleDelete = (e) => {
     e.preventDefault();
@@ -10,11 +11,13 @@ const centerCard = ({ center, deleteCenter }) => {
   }
 
   return (
-    <div>
-      <div className="image">
-      </div>
+    <CenterCardWrapper className="center">
       <div className="content">
-        <div className="header">{building}</div>
+        <div className="building">{building}</div>
+        <div className="hall">{hall}</div>
+        <div className="city">{city}</div>
+        <div className="price">{price} units</div>
+        <div className="capacity">{capacity} units</div>
       </div>
       <div className="extra content">
         <div className="two buttons">
@@ -22,7 +25,7 @@ const centerCard = ({ center, deleteCenter }) => {
           <div className="basic button red" onClick={handleDelete}>Delete</div>
         </div>
       </div>
-    </div>
+    </CenterCardWrapper>
   );
 }
 

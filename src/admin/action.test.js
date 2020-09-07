@@ -1,10 +1,7 @@
 import * as actions from './actions';
-import configureMockStore from 'redux-mock-store';
-import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
+import store from '../store';
 
-const middlewares = [thunk]
-const mockStore = configureMockStore(middlewares)
 
 describe('actions', () => {
   const centers = [
@@ -55,7 +52,7 @@ describe('async actions', () => {
   afterEach(() => {
     fetchMock.restore()
   })
-  it('', () => {
+  it('request centers', () => {
     fetchMock.getOnce('http://localhost:3002/api/v1/centers', {
       body: { centers: [{ building: 'Taj', hall: 'Avalon' }] },
       headers: { 'content-type': 'application/json' }
@@ -63,14 +60,11 @@ describe('async actions', () => {
 
     const expectedActions = [
       {
-        type: actions.setCenters, body: {
-          centers: [
-            { building: 'Taj', hall: 'Avalon' }
-          ]
-        }
-      }
+        type: actions.SET_CENTERS,
+        centers:
+          [{ building: 'Taj', hall: 'Avalon' }]
+      },
     ]
-    const store = mockStore({ centers: [] })
     store.dispatch(actions.requestCenters()).then(() => {
       expect(store.getActions()).toEqual(expectedActions)
     })

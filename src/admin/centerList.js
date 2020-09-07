@@ -1,5 +1,6 @@
 import React from 'react';
 import CenterCard from './centerCard'
+import { CenterListWrapper } from './centerListStyle'
 
 const CenterList = ({ centers, deleteCenter }) => {
   const emptyMessage = (
@@ -8,8 +9,7 @@ const CenterList = ({ centers, deleteCenter }) => {
 
   const centerList = (
     <>
-      <p>centers list</p>
-      <div className="center list">
+      <CenterListWrapper className="center list">
         {centers.map((center, idx) => {
           return (
             <CenterCard
@@ -20,7 +20,7 @@ const CenterList = ({ centers, deleteCenter }) => {
             />
           )
         })}
-      </div>
+      </CenterListWrapper>
     </>
   )
   return (

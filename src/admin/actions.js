@@ -41,7 +41,7 @@ export const centerDeleted = (centerId) => {
 
 export const requestCenters = () => {
   return dispatch => {
-    fetch('http://localhost:3002/api/v1/centers')
+    return fetch('http://localhost:3002/api/v1/centers')
       .then(res => res.json())
       .then(data => {
         dispatch(setCenters(data));
@@ -52,7 +52,7 @@ export const requestCenters = () => {
 export const saveCenter = (formData) => {
   let data = new FormData(formData);
   return dispatch => {
-    fetch('http://localhost:3002/api/v1/centers', {
+    return fetch('http://localhost:3002/api/v1/centers', {
       method: "POST",
       mode: "cors",
       body: data
@@ -66,7 +66,7 @@ export const saveCenter = (formData) => {
 // for Edit Centers
 export const centerFetch = (id) => {
   return dispatch => {
-    fetch(`http://localhost:3002/api/v1/centers/${id}`)
+    return fetch(`http://localhost:3002/api/v1/centers/${id}`)
       .then(res => res.json())
       .then(data => dispatch(centerFetched(data.center)))
   }
@@ -75,7 +75,7 @@ export const centerFetch = (id) => {
 export const centerUpdate = (id, formData) => {
   const data = new FormData(formData);
   return dispatch => {
-    fetch(`http://localhost:3002/api/v1/centers/${id}`, {
+    return fetch(`http://localhost:3002/api/v1/centers/${id}`, {
       method: "PUT",
       mode: "cors",
       body: data
