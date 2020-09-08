@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import CenterList from './centerList';
-import { deleteCenter } from './actions';
+import CenterList from '../centerList/centerList';
+import { deleteCenter } from '../../actions';
 import CentersPageWrapper from './centersPageStyle';
 
 export const CentersPage = ({ centers, deleteCenter }) => (

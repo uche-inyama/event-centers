@@ -43,9 +43,9 @@ const centerCard = ({ center, deleteCenter }) => {
 centerCard.propTypes = {
   deleteCenter: PropTypes.func.isRequired,
   center: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     building: PropTypes.string.isRequired,
     hall: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CenterCard from './centerCard';
+import CenterCard from '../centerCard/centerCard';
 import CenterListWrapper from './centerListStyle';
 
 const CenterList = ({ centers, deleteCenter }) => {
@@ -34,7 +34,6 @@ CenterList.propTypes = {
     PropTypes.shape({
       building: PropTypes.string.isRequired,
       hall: PropTypes.string.isRequired,
-      address: PropTypes.string.isRequired,
       city: PropTypes.string.isRequired,
       state: PropTypes.string.isRequired,
       price: PropTypes.number.isRequired,

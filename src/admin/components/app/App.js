@@ -1,12 +1,12 @@
+/* eslint-disable import/no-named-as-default-member */
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import './App.css';
-import CentersPage from './admin/centersPage';
-import newCenterForm from './admin/newCenterForm';
-import { requestCenters } from './admin/actions';
-import centerCard from './admin/centerCard';
+import CentersPage from '../centerPage/centersPage';
+import newCenterForm from '../newCenterForm/newCenterForm';
+import { requestCenters } from '../../actions';
+import centerCard from '../centerCard/centerCard';
 
 const App = ({ loadCenters }) => {
   useEffect(() => {
