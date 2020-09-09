@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import CenterCard from '../centerCard/centerCard';
 import CenterListWrapper from './centerListStyle';
 
@@ -31,10 +32,16 @@ const CenterList = ({ centers, deleteCenter }) => {
       </CenterListWrapper>
     </>
   );
+
+  const CenterListStyle = styled.div`
+    position: relative;
+    top: 50px;
+  `;
+
   return (
-    <div>
+    <CenterListStyle className="center-list">
       {centers.length === 0 ? emptyMessage : centerList}
-    </div>
+    </CenterListStyle>
   );
 };
 

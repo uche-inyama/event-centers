@@ -37,11 +37,11 @@ export class CreateCenter extends Component {
       });
   }
 
-  onImageChange = (event) => {
+  onImageChange = event => {
     this.setState({ image: event.target.files[0] });
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     const { id } = this.state;
     const { updateCenter, formSubmit, history } = this.props;
