@@ -29,7 +29,7 @@ export const centerDeleted = centerId => ({
   centerId,
 });
 
-export const requestCenters = () => dispatch => fetch('http://localhost:3002/api/v1/centers')
+export const requestCenters = () => dispatch => fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers')
   .then(res => res.json())
   .then(data => {
     dispatch(setCenters(data));
@@ -37,7 +37,7 @@ export const requestCenters = () => dispatch => fetch('http://localhost:3002/api
 
 export const saveCenter = formData => {
   const data = new FormData(formData);
-  return dispatch => fetch('http://localhost:3002/api/v1/centers', {
+  return dispatch => fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers', {
     method: 'POST',
     mode: 'cors',
     body: data,
@@ -48,13 +48,13 @@ export const saveCenter = formData => {
 };
 
 // for Edit Centers
-export const centerFetch = id => dispatch => fetch(`http://localhost:3002/api/v1/centers/${id}`)
+export const centerFetch = id => dispatch => fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${id}`)
   .then(res => res.json())
   .then(data => dispatch(centerFetched(data.center)));
 
 export const centerUpdate = (id, formData) => {
   const data = new FormData(formData);
-  return dispatch => fetch(`http://localhost:3002/api/v1/centers/${id}`, {
+  return dispatch => fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${id}`, {
     method: 'PUT',
     mode: 'cors',
     body: data,
@@ -65,7 +65,7 @@ export const centerUpdate = (id, formData) => {
 };
 
 export const deleteCenter = id => dispatch => {
-  fetch(`http://localhost:3002/api/v1/centers/${id}`, {
+  fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${id}`, {
     method: 'delete',
     mode: 'cors',
   })

@@ -28,7 +28,7 @@ export class CreateCenter extends Component {
     const { match } = this.props;
     if (!match.params.id) return;
 
-    fetch(`http://localhost:3002/api/v1/centers/${match.params.id}`)
+    fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${match.params.id}`)
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -167,23 +167,19 @@ const mapStateToProps = (state, props) => {
   return { id };
 };
 
+CreateCenter.defaultProps = {
+  id: null,
+}
+
 CreateCenter.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string,
   updateCenter: PropTypes.func.isRequired,
   formSubmit: PropTypes.func.isRequired,
   history: PropTypes.objectOf(
-    PropTypes.shape({
-      push: PropTypes.func.isRequired,
-    }),
+    PropTypes.any
   ).isRequired,
   match: PropTypes.objectOf(
-    PropTypes.shape({
-      params: PropTypes.objectOf(
-        PropTypes.shape({
-          id: PropTypes.number.isRequired,
-        }),
-      ),
-    }),
+    PropTypes.any
   ).isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateCenter);
