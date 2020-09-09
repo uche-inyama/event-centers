@@ -17,8 +17,9 @@ const CenterCardWrapper = styled.div`
       display: grid;
       grid-template-columns: 1fr 2fr;
       grid-gap: 3px;
-      .basic.button.green{
+      .basic.button.green, .basic.button.red{
         border: solid 0.5px green;
+        border-radius: 2px;
         color: black;
         padding: 2px;
         text-decoration: none;
@@ -27,10 +28,6 @@ const CenterCardWrapper = styled.div`
       }
       .basic.button.red{
         border: solid 0.5px red;
-        color: black;
-        padding: 2px;
-        height: 20px;
-        text-align: center;
         width: 60%;
       }
     }

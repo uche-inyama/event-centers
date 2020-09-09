@@ -15,14 +15,18 @@ const CenterListWrapper = styled.div`
   .capacity-value{
     justify-self: center;
     padding-left: 50px;
+    font-weight: 700;
+
   }
   .city-name {
-    padding-left: 30px;
+    padding-left: 40px;
+    font-weight: 700;
   }
-  .city-name, .capacity-value,
+ 
+  
   .price-value, .hall-name,
   .building-name{
-    padding-bottom: 20px;
+    padding: 0 0 20px 20px;
     font-weight: 700;
   }
 

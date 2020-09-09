@@ -12,9 +12,9 @@ const CenterList = ({ centers, deleteCenter }) => {
     <>
       <CenterListWrapper className="center list">
         <div className="headers">
-          <div className="building-name">Name of building</div>
-          <div className="hall-name">Name of hall</div>
-          <div className="city-name">Name of City</div>
+          <div className="building-name">Building</div>
+          <div className="hall-name"> Hall</div>
+          <div className="city-name"> City</div>
           <div className="price-value">Price</div>
           <div className="capacity-value">Capacity</div>
           <div />
