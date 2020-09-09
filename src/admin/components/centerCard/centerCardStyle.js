@@ -29,6 +29,7 @@ const CenterCardWrapper = styled.div`
       .basic.button.red{
         border: solid 0.5px red;
         width: 60%;
+        cursor: pointer;
       }
     }
     .extra.content{
