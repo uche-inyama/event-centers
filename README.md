@@ -1,8 +1,6 @@
 # Event Centers Dashboard
 
-
-> In this project I implemented an admin panel, with CRUD features.
-> I built with React and Redux. 
+> In this project, I have implemented an admin panel, with CRUD features, built with React and Redux. 
 
 > screen shot
 
@@ -13,15 +11,12 @@ Additional description about the project and its features.
 - JavaScript,
 - HTML,
 - CSS,
-- React
+- React,
 - Redux
 
 ## Features
 - Form for creating and editing an event center
 - A page that shows the list of event centers
-
-## Potential Features
-
 
 ## Live Demo
 
@@ -29,7 +24,7 @@ Additional description about the project and its features.
 
 ## Getting Started
 
-Clone the repository with `git@github.com:uche-inyama/catalogue_of_receipe.git` to get a local copy.
+Clone the repository with `git@github.com:uche-inyama/event-centers.git` to get a local copy.
 
 To get the local copy up and running follow these simple example steps.
 
@@ -43,8 +38,8 @@ To get the local copy up and running follow these simple example steps.
 
     - Then run, yarn start, to start the server.
 
-Open http://localhost:3000/ in your browser
-
+    - Ensure that the server for that api this application needs in running on ports 3002.
+    
 ### Run tests
 
     run: npm run test
