@@ -17,11 +17,11 @@ export class CreateCenter extends Component {
       state: '',
       price: '',
       capacity: '',
-      image: null,
+      // image: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.onImageChange = this.onImageChange.bind(this);
+    // this.onImageChange = this.onImageChange.bind(this);
   }
 
   componentDidMount() {
@@ -37,20 +37,38 @@ export class CreateCenter extends Component {
       });
   }
 
-  onImageChange = event => {
-    this.setState({ image: event.target.files[0] });
-  }
+  // onImageChange = event => {
+  //   this.setState({ image: event.target.files[0] });
+  // }
 
-  handleSubmit = event => {
+  handleSubmit(event) {
     event.preventDefault();
     const { id } = this.state;
-    const { updateCenter, formSubmit, history } = this.props;
-    if (id) {
-      updateCenter(id, event.target);
-    } else {
-      formSubmit(event.target);
-    }
-    history.push('/');
+
+    this.data = new FormData(event.target);
+    console.log(this.data);
+    const ans = this.data.get('center[image]');
+    console.log(ans);
+    this.data2 = new FormData();
+    this.data2.append('file', ans);
+    this.data2.append('upload_preset', 'event_center');
+
+    fetch('https://api.cloudinary.com/v1_1/ddcakt97r/image/upload', {
+      method: 'POST',
+      body: this.data2,
+    }).then(response => response.json())
+      // eslint-disable-next-line camelcase
+      .then(({ public_id }) => {
+        this.data.set('center[image]', public_id);
+        console.log(this.data.get('center[image]'));
+        const { updateCenter, formSubmit, history } = this.props;
+        if (id) {
+          updateCenter(id, event.target);
+        } else {
+          formSubmit(this.data);
+        }
+        history.push('/');
+      });
   }
 
   handleChange(name, e) {
@@ -88,7 +106,7 @@ export class CreateCenter extends Component {
             <input
               type="text"
               name="center[hall]"
-              onChange={e => { this.handleChange('hall', e) }}
+              onChange={e => { this.handleChange('hall', e); }}
               value={hall}
             />
           </div>
@@ -136,7 +154,7 @@ export class CreateCenter extends Component {
               type="file"
               accept="image/*"
               multiple={false}
-              onChange={this.onImageChange}
+            // onChange={this.onImageChange}
             />
           </div>
           <div className="field">
@@ -169,17 +187,17 @@ const mapStateToProps = (state, props) => {
 
 CreateCenter.defaultProps = {
   id: null,
-}
+};
 
 CreateCenter.propTypes = {
   id: PropTypes.string,
   updateCenter: PropTypes.func.isRequired,
   formSubmit: PropTypes.func.isRequired,
   history: PropTypes.objectOf(
-    PropTypes.any
+    PropTypes.any,
   ).isRequired,
   match: PropTypes.objectOf(
-    PropTypes.any
+    PropTypes.any,
   ).isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(CreateCenter);

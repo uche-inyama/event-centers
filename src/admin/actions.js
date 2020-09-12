@@ -1,3 +1,5 @@
+import * as imageUrl from './imageUrl';
+
 export const SET_CENTERS = 'SET_CENTERS';
 export const POST_CENTERS = 'POST_CENTERS';
 export const CENTER_FETCHED = 'CENTER_FETCHED';
@@ -36,15 +38,13 @@ export const requestCenters = () => dispatch => fetch('https://serene-eyrie-9737
   });
 
 export const saveCenter = formData => {
-  const data = new FormData(formData);
-  return dispatch => fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers', {
+  return (dispatch) => fetch(`${imageUrl.localHost}/api/v1/centers`, {
     method: 'POST',
     mode: 'cors',
-    body: data,
-  }).then(response => response.json())
-    .then(json => {
-      dispatch(postCenters(json));
-    });
+    body: formData,
+  })
+    .then(response => response.json())
+    .then(json => dispatch(postCenters(json)));
 };
 
 // for Edit Centers
