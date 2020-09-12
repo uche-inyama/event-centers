@@ -31,7 +31,7 @@ export const centerDeleted = centerId => ({
   centerId,
 });
 
-export const requestCenters = () => dispatch => fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers')
+export const requestCenters = () => dispatch => fetch(`${imageUrl.localHost}/api/v1/centers`)
   .then(res => res.json())
   .then(data => {
     dispatch(setCenters(data));
@@ -65,7 +65,7 @@ export const centerUpdate = (id, formData) => {
 };
 
 export const deleteCenter = id => dispatch => {
-  fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${id}`, {
+  fetch(`${imageUrl.localHost}/api/v1/centers/${id}`, {
     method: 'delete',
     mode: 'cors',
   })

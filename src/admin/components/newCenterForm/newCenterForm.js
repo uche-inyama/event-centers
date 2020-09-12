@@ -17,11 +17,9 @@ export class CreateCenter extends Component {
       state: '',
       price: '',
       capacity: '',
-      // image: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.onImageChange = this.onImageChange.bind(this);
   }
 
   componentDidMount() {
@@ -37,18 +35,12 @@ export class CreateCenter extends Component {
       });
   }
 
-  // onImageChange = event => {
-  //   this.setState({ image: event.target.files[0] });
-  // }
-
   handleSubmit(event) {
     event.preventDefault();
     const { id } = this.state;
 
     this.data = new FormData(event.target);
-    console.log(this.data);
     const ans = this.data.get('center[image]');
-    console.log(ans);
     this.data2 = new FormData();
     this.data2.append('file', ans);
     this.data2.append('upload_preset', 'event_center');
@@ -58,9 +50,8 @@ export class CreateCenter extends Component {
       body: this.data2,
     }).then(response => response.json())
       // eslint-disable-next-line camelcase
-      .then(({ public_id }) => {
-        this.data.set('center[image]', public_id);
-        console.log(this.data.get('center[image]'));
+      .then(({ url }) => {
+        this.data.set('center[image]', url);
         const { updateCenter, formSubmit, history } = this.props;
         if (id) {
           updateCenter(id, event.target);
@@ -154,7 +145,6 @@ export class CreateCenter extends Component {
               type="file"
               accept="image/*"
               multiple={false}
-            // onChange={this.onImageChange}
             />
           </div>
           <div className="field">
