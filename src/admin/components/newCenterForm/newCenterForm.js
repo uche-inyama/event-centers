@@ -156,19 +156,17 @@ export class CreateCenter extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    formSubmit: (center => {
-      dispatch(saveCenter(center));
-    }),
-    fetchCenter: (id => {
-      dispatch(centerFetched(id));
-    }),
-    updateCenter: (id, center) => {
-      dispatch(centerUpdate(id, center));
-    },
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  formSubmit: (center => {
+    dispatch(saveCenter(center));
+  }),
+  fetchCenter: (id => {
+    dispatch(centerFetched(id));
+  }),
+  updateCenter: (id, center) => {
+    dispatch(centerUpdate(id, center));
+  },
+});
 
 const mapStateToProps = (state, props) => {
   const { params: { id } } = props.match;

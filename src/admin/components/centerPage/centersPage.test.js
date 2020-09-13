@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { mount } from 'enzyme';
 import { createMemoryHistory } from 'history';
@@ -10,19 +11,22 @@ describe('center\'s component', () => {
   beforeEach(() => {
     const history = createMemoryHistory();
     props = {
-      dispatch: jest.fn(),
+      deleteCenter: jest.fn(),
       centers: [
-        { id: 1, building: 'Taj', hall: 'bukky' },
+        {
+          id: 1,
+          building: 'Taj',
+          hall: 'bukky',
+          city: 'Lagos',
+          state: 'Lagos',
+          price: 200,
+          capacity: 1000,
+        },
       ],
     };
     wrapper = mount(
       <Router history={history}>
-        <CentersPage
-          id={props.centers.id}
-          building={props.centers.building}
-          hall={props.centers.hall}
-          dispatch={props.dispatch}
-        />
+        <CentersPage {...props} />
       </Router>,
     );
   });

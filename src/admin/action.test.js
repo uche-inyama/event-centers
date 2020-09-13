@@ -1,5 +1,6 @@
 import fetchMock from 'fetch-mock';
 import * as actions from './actions';
+import * as url from './imageUrl';
 import store from '../store';
 
 describe('actions', () => {
@@ -52,7 +53,7 @@ describe('async actions', () => {
     fetchMock.restore();
   });
   it('request centers', () => {
-    fetchMock.getOnce('http://localhost:3002/api/v1/centers', {
+    fetchMock.getOnce(`${url.herokuHost}/api/v1/centers`, {
       body: { centers: [{ building: 'Taj', hall: 'Avalon' }] },
       headers: { 'content-type': 'application/json' },
     });

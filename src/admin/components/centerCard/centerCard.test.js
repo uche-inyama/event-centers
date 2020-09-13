@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { Router } from 'react-router-dom';
@@ -7,12 +8,15 @@ import CenterCard from './centerCard';
 describe.skip('cardCenter', () => {
   test('Edit text & Delete text', () => {
     const history = createMemoryHistory();
-    const center = {
-      building: 'Cherry',
+    const props = {
+      deleteCenter: jest.fn(),
+      center: {
+        building: 'Cherry',
+      },
     };
     render(
       <Router history={history}>
-        <CenterCard center={center} />
+        <CenterCard {...props} />
       </Router>,
     );
     screen.debug();
