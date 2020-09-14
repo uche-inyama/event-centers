@@ -2,7 +2,10 @@
 
 > In this project, I have implemented an admin panel, with CRUD features, built with React and Redux. 
 
-> screen shot
+## Admin Panel
+
+![createCenter](https://user-images.githubusercontent.com/46329537/93037525-8d74ce80-f63a-11ea-8d23-dd10f4ad5f4d.png)
+
 
 Additional description about the project and its features.
 
@@ -20,7 +23,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://practical-bose-9026ec.netlify.app/)
+[Live Demo Link](https://quirky-darwin-4f9d6e.netlify.app/)
 
 ## Getting Started
 
@@ -46,7 +49,7 @@ To get the local copy up and running follow these simple example steps.
 
 ### Deployment:
 
-https://practical-bose-9026ec.netlify.app/
+https://quirky-darwin-4f9d6e.netlify.app/
 
 ## Author
 
