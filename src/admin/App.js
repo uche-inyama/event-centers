@@ -3,14 +3,15 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import CentersPage from '../centerPage/centersPage';
-import newCenterForm from '../newCenterForm/newCenterForm';
-import { requestCenters } from '../../actions';
-import centerCard from '../centerCard/centerCard';
+import CentersPage from './containers/centerPage/centersPage';
+import newCenterForm from './containers/newCenterForm/newCenterForm';
+import { requestCenters } from './actions';
+import centerCard from './components/centerCard/centerCard';
 
 const App = ({ loadCenters }) => {
   useEffect(() => {
     loadCenters();
+    // eslint-disable-next-line
   }, []);
 
   return (
