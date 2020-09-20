@@ -1,6 +1,6 @@
 import reducer from './centers';
-import * as actions from '../actions';
-import { initStore } from '../../store';
+import * as actions from '../actions/actions';
+import { initStore } from './store';
 
 describe.skip('centers reducer', () => {
   let store;

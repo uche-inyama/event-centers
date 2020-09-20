@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import centers from './reducers/centers';
+import centers from './centers';
 
 export default combineReducers({
   centers,

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CenterList from '../../components/centerList/centerList';
-import { deleteCenter } from '../../actions';
+import { deleteCenter } from '../../actions/actions';
 import CentersPageWrapper from './centersPageStyle';
 
 export const CentersPage = ({ centers, deleteCenter }) => (

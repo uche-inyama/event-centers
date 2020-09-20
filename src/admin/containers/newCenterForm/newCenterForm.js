@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { saveCenter, centerFetched, centerUpdate } from '../../actions';
+import { saveCenter, centerFetched, centerUpdate } from '../../actions/actions';
 import NewCenterForm from './newCenterFormStyle';
 
 export class CreateCenter extends Component {

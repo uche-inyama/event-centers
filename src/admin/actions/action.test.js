@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 import * as actions from './actions';
-import * as url from './imageUrl';
-import store from '../store';
+import * as url from '../imageUrl';
+import store from '../reducers/store';
 
 describe('actions', () => {
   const centers = [

@@ -1,4 +1,4 @@
-import * as imageUrl from './imageUrl';
+import * as imageUrl from '../imageUrl';
 
 export const SET_CENTERS = 'SET_CENTERS';
 export const POST_CENTERS = 'POST_CENTERS';

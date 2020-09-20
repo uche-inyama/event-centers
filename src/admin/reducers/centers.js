@@ -1,6 +1,6 @@
 import {
   SET_CENTERS, POST_CENTERS, CENTER_UPDATED, CENTER_DELETED,
-} from '../actions';
+} from '../actions/actions';
 
 const centers = (state = [], action) => {
   switch (action.type) {

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import CentersPage from './containers/centerPage/centersPage';
 import newCenterForm from './containers/newCenterForm/newCenterForm';
-import { requestCenters } from './actions';
+import { requestCenters } from './actions/actions';
 import centerCard from './components/centerCard/centerCard';
 
 const App = ({ loadCenters }) => {
