@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CentersPageWrapper = styled.div`
+const CentersPageWrapper = styled.section`
 position: relative;
 font-family: 'Montserrat', sans-serif;
   h2{
