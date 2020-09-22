@@ -37,8 +37,8 @@ export class CreateCenter extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const formElement = event.target;
     const { id } = this.state;
-
     this.data = new FormData(event.target);
     const ans = this.data.get('center[image]');
     this.data2 = new FormData();
@@ -54,7 +54,7 @@ export class CreateCenter extends Component {
         this.data.set('center[image]', url);
         const { updateCenter, formSubmit, history } = this.props;
         if (id) {
-          updateCenter(id, event.target);
+          updateCenter(id, formElement);
         } else {
           formSubmit(this.data);
         }
