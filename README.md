@@ -23,7 +23,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://quirky-darwin-4f9d6e.netlify.app/)
+[Live Demo Link](https://keen-engelbart-e721bd.netlify.app)
 
 ## Getting Started
 
@@ -49,7 +49,7 @@ To get the local copy up and running follow these simple example steps.
 
 ### Deployment:
 
-https://quirky-darwin-4f9d6e.netlify.app/
+https://keen-engelbart-e721bd.netlify.app
 
 ## Author
 
