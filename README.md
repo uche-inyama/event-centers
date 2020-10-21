@@ -23,7 +23,7 @@ Additional description about the project and its features.
 
 ## Live Demo
 
-[Live Demo Link](https://keen-engelbart-e721bd.netlify.app)
+[Live Demo Link](https://jovial-meitner-20063a.netlify.app/)
 
 ## Getting Started
 
@@ -49,7 +49,7 @@ To get the local copy up and running follow these simple example steps.
 
 ### Deployment:
 
-https://keen-engelbart-e721bd.netlify.app
+https://jovial-meitner-20063a.netlify.app/
 
 ## Author
 
