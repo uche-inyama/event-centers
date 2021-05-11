@@ -41,7 +41,7 @@ To get the local copy up and running follow these simple example steps.
 
     - Then run, yarn start, to start the server.
 
-    - Ensure that the server for that api this application needs in running on ports 3002.
+    - Ensure that the server for that api this application needs is running on ports 3002.
     
 ### Run tests
 
