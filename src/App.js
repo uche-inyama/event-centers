@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client/react';
 import CentersPage from './containers/centerPage/centersPage';
 import newCenterForm from './containers/newCenterForm/newCenterForm';
 import { requestCenters } from './actions/actions';
@@ -14,17 +16,24 @@ const App = ({ loadCenters }) => {
     // eslint-disable-next-line
   }, []);
 
+  const client = new ApolloClient({
+    uri: 'http://localhost:3000/graphql',
+    cache: new InMemoryCache(),
+  });
+
   return (
-    <div className="App">
-      <Router>
-        <Switch>
-          <Route exact path="/" component={CentersPage} />
-          <Route excat path="/center/new" component={newCenterForm} />
-          <Route excat path="/center/:id" component={newCenterForm} />
-          <Route path="/new" component={centerCard} />
-        </Switch>
-      </Router>
-    </div>
+    <ApolloProvider client={client}>
+      <div className="App">
+        <Router>
+          <Switch>
+            <Route exact path="/" component={CentersPage} />
+            <Route excat path="/center/new" component={newCenterForm} />
+            <Route excat path="/center/:id" component={newCenterForm} />
+            <Route path="/new" component={centerCard} />
+          </Switch>
+        </Router>
+      </div>
+    </ApolloProvider>
   );
 };
 

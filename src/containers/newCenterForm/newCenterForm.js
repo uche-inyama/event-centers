@@ -26,7 +26,7 @@ export class CreateCenter extends Component {
     const { match } = this.props;
     if (!match.params.id) return;
 
-    fetch(`https://serene-eyrie-97376.herokuapp.com/api/v1/centers/${match.params.id}`)
+    fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers')
       .then(res => res.json())
       .then(json => {
         this.setState({
@@ -34,6 +34,8 @@ export class CreateCenter extends Component {
         });
       });
   }
+
+  // /${match.params.id}
 
   handleSubmit(event) {
     event.preventDefault();
