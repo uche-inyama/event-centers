@@ -3,7 +3,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CreateCenter } from './newCenterForm';
 
-describe.skip('form', () => {
+describe('form', () => {
   let props;
   test('filling the form', () => {
     props = {

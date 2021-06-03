@@ -51,7 +51,7 @@ export const centerFetch = id => dispatch => fetch(`${imageUrl.herokuHost}/${id}
   .then(data => dispatch(centerFetched(data.center)));
 
 export const centerUpdate = (id, formData) => {
-  console.log(formData);
+  // console.log(formData);
   const data = new FormData(formData);
   return dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers/${id}`, {
     method: 'PUT',

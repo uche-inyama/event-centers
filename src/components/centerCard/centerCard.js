@@ -1,16 +1,25 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CenterCardWrapper from './centerCardStyle';
+import { GET_CENTERS } from '../../Queries';
 
-const centerCard = ({ center, deleteCenter }) => {
+const CenterCard = ({
+  center, removeCenter,
+}) => {
   const {
     id, building, hall, city, price, capacity,
   } = center;
 
   const handleDelete = e => {
     e.preventDefault();
-    deleteCenter(id);
+    removeCenter({
+      variables: {
+        id,
+      },
+      refetchQueries: [{ query: GET_CENTERS }],
+    });
   };
 
   return (
@@ -40,17 +49,16 @@ const centerCard = ({ center, deleteCenter }) => {
   );
 };
 
-centerCard.propTypes = {
-  deleteCenter: PropTypes.func.isRequired,
+CenterCard.propTypes = {
+  removeCenter: PropTypes.func.isRequired,
   center: PropTypes.shape({
-    id: PropTypes.number.isRequired,
+    id: PropTypes.string.isRequired,
     building: PropTypes.string.isRequired,
     hall: PropTypes.string.isRequired,
     city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    capacity: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
+    capacity: PropTypes.string.isRequired,
   }).isRequired,
 };
 
-export default centerCard;
+export default CenterCard;
