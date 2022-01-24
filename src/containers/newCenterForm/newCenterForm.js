@@ -1,162 +1,153 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { saveCenter, centerFetched, centerUpdate } from '../../actions/actions';
 import NewCenterForm from './newCenterFormStyle';
+import { localHost } from '../../imageUrl';
+import { initialValues } from './initialValues';
+import validate from './validate';
 
-export class CreateCenter extends Component {
-  constructor(props) {
-    super(props);
-    const { id } = this.props;
-    this.state = {
-      id,
-      building: '',
-      hall: '',
-      city: '',
-      state: '',
-      price: '',
-      capacity: '',
-    };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
+const CreateCenter = props => {
+  const { id } = props;
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formErrors, setFormErrors] = useState({});
+  // const [isSubmit, setIsSubmit] = useState(false);
+  const [header, setHeader] = useState('Add new Center');
+  // const [message, setMessage] = useState('Created');
 
-  componentDidMount() {
-    const { match } = this.props;
-    if (!match.params.id) return;
-
-    fetch('https://serene-eyrie-97376.herokuapp.com/api/v1/centers')
+  useEffect(() => {
+    const { match: { params } } = props;
+    const { id } = params;
+    if (!id) return;
+    setHeader('Update Center');
+    fetch(`${localHost}/api/v1/centers/${id}`)
       .then(res => res.json())
       .then(json => {
-        this.setState({
+        setFormValues({
           ...json,
         });
       });
-  }
+  }, [id]);
 
-  // /${match.params.id}
+  // useEffect(() => {
+  //   console.log(formErrors);
+  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
+  //     console.log(formValues);
+  //   }
+  // }, [formErrors]);
 
-  handleSubmit(event) {
+  const validateForm = errors => {
+    let valid = true;
+    Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+    return valid;
+  };
+
+  const handleSubmit = event => {
     event.preventDefault();
-    const formElement = event.target;
-    const { id } = this.state;
-    this.data = new FormData(event.target);
-    const ans = this.data.get('center[image]');
-    this.data2 = new FormData();
-    this.data2.append('file', ans);
-    this.data2.append('upload_preset', 'event_center');
+    setFormErrors(validate(formValues));
+    console.log((validate(formValues)));
+    console.log(validateForm(validate(formValues)));
 
-    fetch('https://api.cloudinary.com/v1_1/ddcakt97r/image/upload', {
-      method: 'POST',
-      body: this.data2,
-    }).then(response => response.json())
-      // eslint-disable-next-line camelcase
-      .then(({ url }) => {
-        this.data.set('center[image]', url);
-        const { updateCenter, formSubmit, history } = this.props;
-        if (id) {
-          updateCenter(id, formElement);
-        } else {
-          formSubmit(this.data);
-        }
-        history.push('/');
-      });
-  }
+    if (validateForm(validate(formValues))) {
+      const formElement = event.target;
+      const { id } = formValues;
+      const data = new FormData(formElement);
+      const ans = data.get('image');
+      const imageData = new FormData();
+      imageData.append('file', ans);
+      imageData.append('upload_preset', 'event_center');
 
-  handleChange(name, e) {
-    this.setState({ [name]: e.target.value });
-  }
+      fetch('https://api.cloudinary.com/v1_1/ddcakt97r/image/upload', {
+        method: 'POST',
+        body: imageData,
+      }).then(response => response.json())
+        .then(({ url }) => {
+          data.set('image', url);
+          const { updateCenter, formSubmit, history } = props;
+          if (id) {
+            updateCenter(id, formElement);
+            history.push('/');
+          } else {
+            formSubmit(data);
+            history.push('/');
+          }
+        });
+    } else {
+      console.log('invalid form');
+    }
+  };
 
-  render() {
-    const {
-      building, hall,
-      city,
-      state,
-      price,
-      capacity,
-    } = this.state;
-    return (
-      <NewCenterForm>
-        <form onSubmit={this.handleSubmit}>
-          <h2>Add new Center</h2>
-          <div className="field">
-            <label
-              htmlFor="title"
-            >
-              Building Name
-            </label>
-            <input
-              type="text"
-              aria-label="building"
-              name="center[building]"
-              onChange={e => { this.handleChange('building', e); }}
-              value={building}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="title">Hall Name</label>
-            <input
-              type="text"
-              name="center[hall]"
-              onChange={e => { this.handleChange('hall', e); }}
-              value={hall}
-            />
-          </div>
+  const handleChange = ({ target: { name, value } }) => {
+    setFormValues({ ...formValues, [name]: value });
+  };
 
-          <div className="field">
-            <label htmlFor="title">City</label>
-            <input
-              type="text"
-              name="center[city]"
-              onChange={e => { this.handleChange('city', e); }}
-              value={city}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="title">State</label>
-            <input
-              type="text"
-              name="center[state]"
-              onChange={e => { this.handleChange('state', e); }}
-              value={state}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="title">Price</label>
-            <input
-              type="text"
-              name="center[price]"
-              onChange={e => { this.handleChange('price', e); }}
-              value={price}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="title">Capacity</label>
-            <input
-              type="text"
-              name="center[capacity]"
-              onChange={e => { this.handleChange('capacity', e); }}
-              value={capacity}
-            />
-          </div>
-          <div className="field">
-            <label htmlFor="title" />
-            <input
-              name="center[image]"
-              type="file"
-              accept="image/*"
-              multiple={false}
-            />
-          </div>
-          <div className="field">
-            <input type="submit" />
-          </div>
-        </form>
-      </NewCenterForm>
-    );
-  }
-}
+  const {
+    building, hall, address, city, state, price, capacity,
+  } = formValues;
+
+  return (
+    <NewCenterForm>
+      {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
+        <div>{`${message} successfully`}</div>
+      ) : (<div />)} */}
+      <form onSubmit={handleSubmit}>
+        <h2>{header}</h2>
+        <div className="field">
+          <label htmlFor="title">Building Name</label>
+          <input type="text" name="building" onChange={handleChange} value={building} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.building}</p>
+
+        <div className="field">
+          <label htmlFor="title">Hall Name</label>
+          <input type="text" name="hall" onChange={handleChange} value={hall} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.hall}</p>
+
+        <div className="field">
+          <label htmlFor="title">Address</label>
+          <input type="text" name="address" onChange={handleChange} value={address} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.address}</p>
+
+        <div className="field">
+          <label htmlFor="title">City</label>
+          <input type="text" name="city" onChange={handleChange} value={city} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.city}</p>
+
+        <div className="field">
+          <label htmlFor="title">State</label>
+          <input type="text" name="state" onChange={handleChange} value={state} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.state}</p>
+
+        <div className="field">
+          <label htmlFor="title">Price</label>
+          <input type="number" name="price" onChange={handleChange} value={price} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.price}</p>
+
+        <div className="field">
+          <label htmlFor="title">Capacity</label>
+          <input type="number" name="capacity" onChange={handleChange} value={capacity} />
+        </div>
+        <p style={{ color: 'red', fontSize: '12px' }}>{formErrors.capacity}</p>
+
+        <div className="field">
+          <label htmlFor="title" />
+          <input name="image" type="file" />
+        </div>
+
+        <div className="field">
+          <input type="submit" />
+        </div>
+      </form>
+    </NewCenterForm>
+  );
+};
 
 const mapDispatchToProps = dispatch => ({
   formSubmit: (center => {

@@ -12,7 +12,7 @@ h2{
   display: grid;
   grid-template-rows: 1fr;
   input{
-    height: 35px;
+    height: 30px;
   }
   label{
     padding-top: 20px;

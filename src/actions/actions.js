@@ -31,13 +31,13 @@ export const centerDeleted = centerId => ({
   centerId,
 });
 
-export const requestCenters = () => dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers`)
+export const requestCenters = () => dispatch => fetch(`${imageUrl.localHost}/api/v1/centers`)
   .then(res => res.json())
   .then(data => {
     dispatch(setCenters(data));
   });
 
-export const saveCenter = formData => dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers`, {
+export const saveCenter = formData => dispatch => fetch(`${imageUrl.localHost}/api/v1/centers`, {
   method: 'POST',
   mode: 'cors',
   body: formData,
@@ -46,14 +46,13 @@ export const saveCenter = formData => dispatch => fetch(`${imageUrl.herokuHost}/
   .then(json => dispatch(postCenters(json)));
 
 // for Edit Centers
-export const centerFetch = id => dispatch => fetch(`${imageUrl.herokuHost}/${id}`)
+export const centerFetch = id => dispatch => fetch(`${imageUrl.localHost}/${id}`)
   .then(res => res.json())
   .then(data => dispatch(centerFetched(data.center)));
 
 export const centerUpdate = (id, formData) => {
-  console.log(formData);
   const data = new FormData(formData);
-  return dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers/${id}`, {
+  return dispatch => fetch(`${imageUrl.localHost}/api/v1/centers/${id}`, {
     method: 'PUT',
     mode: 'cors',
     body: data,
@@ -64,7 +63,7 @@ export const centerUpdate = (id, formData) => {
 };
 
 export const deleteCenter = id => dispatch => {
-  fetch(`${imageUrl.herokuHost}/api/v1/centers/${id}`, {
+  fetch(`${imageUrl.localHost}/api/v1/centers/${id}`, {
     method: 'delete',
     mode: 'cors',
   })
