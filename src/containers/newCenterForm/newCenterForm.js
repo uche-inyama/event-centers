@@ -13,9 +13,7 @@ const CreateCenter = props => {
   const { id } = props;
   const [formValues, setFormValues] = useState(initialValues);
   const [formErrors, setFormErrors] = useState({});
-  // const [isSubmit, setIsSubmit] = useState(false);
   const [header, setHeader] = useState('Add new Center');
-  // const [message, setMessage] = useState('Created');
 
   useEffect(() => {
     const { match: { params } } = props;
@@ -80,9 +78,6 @@ const CreateCenter = props => {
 
   return (
     <NewCenterForm>
-      {/* {Object.keys(formErrors).length === 0 && isSubmit ? (
-        <div>{`${message} successfully`}</div>
-      ) : (<div />)} */}
       <form onSubmit={handleSubmit}>
         <h2>{header}</h2>
         <div className="field">
