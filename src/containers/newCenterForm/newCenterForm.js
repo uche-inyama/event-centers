@@ -31,13 +31,6 @@ const CreateCenter = props => {
       });
   }, [id]);
 
-  // useEffect(() => {
-  //   console.log(formErrors);
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //     console.log(formValues);
-  //   }
-  // }, [formErrors]);
-
   const validateForm = errors => {
     let valid = true;
     Object.values(errors).forEach(val => val.length > 0 && (valid = false));
@@ -47,8 +40,6 @@ const CreateCenter = props => {
   const handleSubmit = event => {
     event.preventDefault();
     setFormErrors(validate(formValues));
-    console.log((validate(formValues)));
-    console.log(validateForm(validate(formValues)));
 
     if (validateForm(validate(formValues))) {
       const formElement = event.target;
