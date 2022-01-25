@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { saveCenter, centerFetched, centerUpdate } from '../../actions/actions';
 import NewCenterForm from './newCenterFormStyle';
 import { localHost } from '../../imageUrl';
-import { initialValues } from './initialValues';
+import initialValues from './initialValues';
 import validate from './validate';
 
 const CreateCenter = props => {

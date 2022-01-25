@@ -9,13 +9,4 @@ export const initialValues = ({
   image: '',
 });
 
-export const formValues = formObject => ({
-  id: formObject.id,
-  building: formObject.building,
-  hall: formObject.hall,
-  address: formObject.address,
-  city: formObject.city,
-  state: formObject.state,
-  capacity: formObject.capacity,
-  price: formObject.price,
-});
+export default initialValues;
