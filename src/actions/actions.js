@@ -6,6 +6,9 @@ export const CENTER_FETCHED = 'CENTER_FETCHED';
 export const CENTER_UPDATED = 'CENTER_UPDATED';
 export const CENTER_DELETED = 'CENTER_DELETED';
 
+const headers = new Headers();
+headers.append('Access-Control-Allow-Origin', imageUrl.herokuHost);
+
 export const setCenters = centers => ({
   type: SET_CENTERS,
   centers,
@@ -31,7 +34,10 @@ export const centerDeleted = centerId => ({
   centerId,
 });
 
-export const requestCenters = () => dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers`)
+export const requestCenters = () => dispatch => fetch(`${imageUrl.herokuHost}/api/v1/centers`, {
+  mode: 'no-cors',
+  headers,
+})
   .then(res => res.json())
   .then(data => {
     dispatch(setCenters(data));
