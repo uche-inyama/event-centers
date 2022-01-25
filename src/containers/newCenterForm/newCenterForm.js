@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { saveCenter, centerFetched, centerUpdate } from '../../actions/actions';
 import NewCenterForm from './newCenterFormStyle';
-import { localHost } from '../../imageUrl';
+import { herokuHost } from '../../imageUrl';
 import initialValues from './initialValues';
 import validate from './validate';
 
@@ -20,7 +20,7 @@ const CreateCenter = props => {
     const { id } = params;
     if (!id) return;
     setHeader('Update Center');
-    fetch(`${localHost}/api/v1/centers/${id}`)
+    fetch(`${herokuHost}/api/v1/centers/${id}`)
       .then(res => res.json())
       .then(json => {
         setFormValues({
