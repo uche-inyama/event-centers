@@ -1,6 +1,7 @@
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import CenterCardWrapper from './centerCardStyle';
 
 const centerCard = ({ center, deleteCenter }) => {
@@ -10,7 +11,9 @@ const centerCard = ({ center, deleteCenter }) => {
 
   const handleDelete = e => {
     e.preventDefault();
-    deleteCenter(id);
+    if (id) {
+      deleteCenter(id);
+    }
   };
 
   return (
@@ -40,17 +43,16 @@ const centerCard = ({ center, deleteCenter }) => {
   );
 };
 
-centerCard.propTypes = {
-  deleteCenter: PropTypes.func.isRequired,
-  center: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    building: PropTypes.string.isRequired,
-    hall: PropTypes.string.isRequired,
-    city: PropTypes.string.isRequired,
-    state: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    capacity: PropTypes.number.isRequired,
-  }).isRequired,
-};
+// centerCard.propTypes = {
+//   deleteCenter: PropTypes.func.isRequired,
+//   center: PropTypes.object.isRequired,
+//   id: PropTypes.number.isRequired,
+//   building: PropTypes.string.isRequired,
+//   hall: PropTypes.string.isRequired,
+//   city: PropTypes.string.isRequired,
+//   state: PropTypes.string.isRequired,
+//   price: PropTypes.number.isRequired,
+//   capacity: PropTypes.number.isRequired,
+// };
 
 export default centerCard;

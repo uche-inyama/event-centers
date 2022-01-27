@@ -1,6 +1,8 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import CenterList from '../../components/centerList/centerList';
 import { deleteCenter } from '../../actions/actions';
@@ -27,17 +29,9 @@ const mapDispatchToProps = dispatch => ({
   }),
 });
 
-CentersPage.propTypes = {
-  centers: PropTypes.arrayOf(
-    PropTypes.shape({
-      building: PropTypes.string.isRequired,
-      hall: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      capacity: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  deleteCenter: PropTypes.func.isRequired,
-};
+// CentersPage.propTypes = {
+//   centers: PropTypes.array.isRequired,
+//   deleteCenter: PropTypes.func.isRequired,
+// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CentersPage);

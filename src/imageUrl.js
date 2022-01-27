@@ -1,4 +1,4 @@
 /* eslint-disable no-unused-vars */
 
 export const localHost = 'http://localhost:3002';
-export const herokuHost = 'https://serene-eyrie-97376.herokuapp.com';
+export const herokuHost = ' https://fast-castle-21756.herokuapp.com';

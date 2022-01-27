@@ -1,5 +1,7 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/forbid-prop-types */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import CenterCard from '../centerCard/centerCard';
 import CenterListWrapper from './centerListStyle';
@@ -45,17 +47,9 @@ const CenterList = ({ centers, deleteCenter }) => {
   );
 };
 
-CenterList.propTypes = {
-  centers: PropTypes.arrayOf(
-    PropTypes.shape({
-      building: PropTypes.string.isRequired,
-      hall: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      state: PropTypes.string.isRequired,
-      price: PropTypes.number.isRequired,
-      capacity: PropTypes.number.isRequired,
-    }),
-  ).isRequired,
-  deleteCenter: PropTypes.func.isRequired,
-};
+// CenterList.propTypes = {
+//   centers: PropTypes.array.isRequired,
+//   deleteCenter: PropTypes.func.isRequired,
+// };
+
 export default CenterList;
